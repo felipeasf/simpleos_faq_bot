@@ -1,0 +1,28 @@
+{
+  "name": "simpleos_faq_bot",
+  "version": "1.0.0",
+  "description": "Simpleos FAQ Bot for telegram",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipeasf/simpleos_faq_bot.git"
+  },
+  "keywords": [
+    "simpleos",
+    "faq",
+    "bot",
+    "eosrio"
+  ],
+  "author": "EOS Rio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felipeasf/simpleos_faq_bot/issues"
+  },
+  "homepage": "https://github.com/felipeasf/simpleos_faq_bot#readme",
+  "dependencies": {
+    "telegraf": "^3.26.0"
+  }
+}
