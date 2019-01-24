@@ -123,13 +123,21 @@ module.exports = {
 		Exodus team has also been super nice and has been giving us support on the initiative:
 		https://support.exodus.io/article/757-eos-claiming-your-eos-with-simpleos`,
 
+	EXTERNAL: `The only ancillary connections are listed as below:
+		- Information about BPs
+		All bp.json files from the BPs websites passes through our proxy to filter and remove any malformed data. Those are the files the BPs publish when they register as block producers on the blockchain, and that contains the information about them.
+		- Price RAM api 
+		In order to update RAM price on EOS and build the graph price, we get that price from our custom API made by us.
+		- account request API (on the alternative method)
+		On the alternative method to create an account, we send the user’s information to our server to create an account. The only information sent are: eos PUBLIC keys, desired account name and the refund address and memo filled in by the user.`,
+
 	EOS_LINK: `SimplEOS download links always come from our github`,
 
+	//STAKE
 	STUCK: `First thing is to check whether you're on SimplEOS latest version (0.7.1). If you're not on it, please update on  https://github.com/eosrio/simpleos/releases
 		If you're on previous versions, that's usually an endpoint problem. It means the endpoint you are using has a high latency or that the network is congested. When you enter SimplEOS, the wallet automatically chooses the fastest endpoint to you, but sometimes this changes in the middle of the session. 
 		When this happens, close and reopen the wallet. Then go to configurations panel (cog symbol on the upper right corner). There, you will see endpoint options. Just click on one that you think is better or click ‘AUTO’ (this recalculates the latencies and chooses the best endpoint for them)`,
 
-	//STAKE
 	HOW_STAKE: `Stake /Unstake slider can be found on the “VOTE” page
 			To stake your EOS, move the slider right.
 			To unstake your EOS, move the slider left. 
