@@ -13,7 +13,7 @@ module.exports = {
 	OPTION11: "Updates",
 	OPTION12: "Who We Are",
 	OPTION13: "Sister Chains",
-	OPTION14: "Contact Support",
+	OPTION14: "Other",
 
 	//ACC MENU
 	ACC_OPT1: "Create First Account",
@@ -98,12 +98,12 @@ module.exports = {
 	SIS_OPT3: "Jungle",
 	SIS_OPT4: "Telos",
 
-
 	//RETURN MSGS
 	RETURN_TO_MAIN: "Return to Main Menu",
 	RETURN_TO_ACC: "Return to Accounts Menu",
 
 	//DEFAULT MSGS
-	CONTACT_SUPPORT: "Contact Support"
+	CONTACT_SUPPORT: "Contact Support",
+	SATISFACTION: "\n\nWas this answer useful?"
 
 };

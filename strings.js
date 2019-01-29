@@ -288,5 +288,9 @@ module.exports = {
 		Like EOS, Telos will be a public platform for decentralized applications with incredible scaling potential owing to its advanced technology and delegated proof-of-stake (DPOS) consensus algorithm. Furthermore, it’s being designed to provide EOS mainnet interoperability. At a very high-level, its governance structure will also be similar and Telos will have the same crucial ability to enact the “intent of Code is Law” concept to help avoid critical failures that led to incidents like the Parity wallet hack in 2017.
 		Here goes a link to their Youtube channel to get more information about the sisterchain: https://www.youtube.com/channel/UC1eRSAt81jUf7zM4hsy5S5Q/videos`,
 
+	YES: `"EOS Rio team is glad for helping you out! Feel free to contact our support team if any doubt remains and vote for us as BP so we can keep the good work =)"`,
+
+	NO: `SORRY! =(`
+
 
 };
