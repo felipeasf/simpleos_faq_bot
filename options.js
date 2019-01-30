@@ -13,7 +13,7 @@ module.exports = {
 	OPTION11: "Updates",
 	OPTION12: "Who We Are",
 	OPTION13: "Sister Chains",
-	OPTION14: "Other",
+	//OPTION14: "Other",
 
 	//ACC MENU
 	ACC_OPT1: "Create First Account",

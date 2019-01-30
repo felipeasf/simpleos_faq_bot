@@ -10,8 +10,7 @@ const options = require('./options');
 
 //BOT
 const bot = new Telegraf(config.telegram.botToken);
-bot.use(Telegraf.log())
-bot.use(session());
+//bot.use(Telegraf.log())
 
 //Mongodb
 const MongoClient = require('mongodb').MongoClient;
@@ -30,7 +29,7 @@ client.connect(function (err) {
 
 //MAIN MENU
 bot.start((ctx) => ctx.reply(strings.HI_MSG, Markup
-    .keyboard([[options.OPTION1, options.OPTION2, options.OPTION3], [options.OPTION4, options.OPTION5, options.OPTION6], [options.OPTION7, options.OPTION8, options.OPTION9], [options.OPTION10, options.OPTION11, options.OPTION12], [options.OPTION13, options.OPTION14]])
+    .keyboard([[options.OPTION1, options.OPTION2, options.OPTION3], [options.OPTION4, options.OPTION5, options.OPTION6], [options.OPTION7, options.OPTION8, options.OPTION9], [options.OPTION10, options.OPTION11, options.OPTION12, options.OPTION13]])
     .resize()
     .extra()));
 
@@ -364,7 +363,7 @@ bot.hears(options.SIS_OPT4, (ctx) => ctx.reply(strings.TELOS + options.SATISFACT
 
 //RETURN BUTTONS
 bot.hears(options.RETURN_TO_MAIN, (ctx) => ctx.reply(strings.HI_MSG, Markup
-    .keyboard([[options.OPTION1, options.OPTION2, options.OPTION3], [options.OPTION4, options.OPTION5, options.OPTION6], [options.OPTION7, options.OPTION8, options.OPTION9], [options.OPTION10, options.OPTION11, options.OPTION12], [options.OPTION13, options.OPTION14]])
+    .keyboard([[options.OPTION1, options.OPTION2, options.OPTION3], [options.OPTION4, options.OPTION5, options.OPTION6], [options.OPTION7, options.OPTION8, options.OPTION9], [options.OPTION10, options.OPTION11, options.OPTION12, options.OPTION13]])
     .resize()
     .extra()));
 bot.hears(options.RETURN_TO_ACC, (ctx) => ctx.reply(strings.CONCERN, Markup
