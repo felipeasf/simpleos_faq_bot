@@ -16,7 +16,6 @@ const bot = new Telegraf(config.telegram.botToken);
 const MongoClient = require('mongodb').MongoClient;
 const client = new MongoClient(config.mongodb.db_url, {useNewUrlParser: true});
 let feedbacks;
-let user;
 let flag;
 
 client.connect(function (err) {
@@ -375,15 +374,14 @@ bot.hears(options.RETURN_TO_ACC, (ctx) => ctx.reply(strings.CONCERN, Markup
 bot.action("Yes", (ctx) => {
     var date = new Date(Date.now()).toLocaleString();
     feedbacks.insertOne({name: ctx.from.username, userid: ctx.from.id, date: date, rate: 1});
-    return ctx.reply(strings.YES);
+    return ctx.reply(strings.YES + strings.START, Markup.removeKeyboard().extra());
 })
 
 bot.action("No", (ctx) => {
     flag = false;
-    var date = new Date(Date.now()).toLocaleString();
-    user = ctx.from.id
-    feedbacks.insertOne({name: ctx.from.username, userid: user, date: date, rate: 0});
-    ctx.reply(strings.ASK);
+    let date = new Date(Date.now()).toLocaleString();
+    feedbacks.insertOne({name: ctx.from.username, userid: ctx.from.id, date: date, rate: 0});
+    ctx.reply(strings.ASK, Markup.removeKeyboard().extra());
     bot.on('text', (ctx) => {
       if(flag)
       {
@@ -391,10 +389,9 @@ bot.action("No", (ctx) => {
       } 
       else { 
         let question = "UserId: " + ctx.from.id + "\nQuestion: " + ctx.message.text;
-        //bot.telegram.forwardMessage(config.support.chatId, user, "userId: " + ctx.message.message_id);
         bot.telegram.sendMessage(config.support.chatId, question);
         flag = true;
-        return ctx.reply(strings.SUPPORT);
+        return ctx.reply(strings.SUPPORT + strings.START);
       }
     });
 })

@@ -294,9 +294,11 @@ module.exports = {
 
 	ASK: `Ops, sorry for that =(
 		We will do our best to improve the solutions available. 
-		Meanwhile, please type your doubts here:`,
+		Meanwhile, please type your question here:`,
 
-	SUPPORT: `The support team will receive your question and will come up with an answer as soon as possible.`
+	SUPPORT: `The support team will receive your question and will come up with an answer as soon as possible.`,
+
+	START: `\n\nType /start if you want to talk again!`
 
 
 };
