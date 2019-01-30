@@ -1,6 +1,6 @@
 module.exports = {
 	HI_MSG: `Welcome to SimplEOS FAQ Bot
-			What does your issue concern?`,
+		What does your issue concern?`,
 
 	CONCERN: "What does your issue concern?",
 
@@ -76,11 +76,13 @@ module.exports = {
 					There you'll be able to move the slide and set the percentage or type the amount of your balance you desire to leave staked.`,
 
 
-	ALT_METHOD: `It's not rare to receive error messages from Binance or some other exchanges 	
-				Alternative Method uses another account to help creating new accounts named “eosrionewacc”.
-				It’s extremely important to type an account to recover funds in case the process does not work. The main method uses a smart contract to guarantee a funds’ recovery if anything goes wrong during the execution. Unfortunately, as some exchanges are blocking addresses that interact with smart contracts, 
-				EOS Rio team developed a method that uses a common account to execute  the process. If anything goes wrong, our team will need the exchange address and memo  to give the funds back to its owner. 
-				If you provide us with a wrong refund address or memo, EOS Rio is not responsible for lost funds in case something goes wrong.`,
+	ALT_METHOD: `It's not rare to receive this error message from Binance or some other exchanges. The address "eosriosignup" keeps creating new accounts at all times besides the error message. However, SimplEOS developed an alternative method to help users create their accounts.
+
+		Different from the main method which uses a smart contract, the Alternative Method uses another account to help creating the new account.
+
+		It’s extremely important to understand a few things about this method:
+		- The user must type an account to recover funds in case the process does not work. The first method uses a smart contract to guarantee a funds’ recovery if anything goes wrong during the execution. Unfortunately, as some exchanges are blocking addresses that interact with smart contracts, so EOS Rio team developed a method that uses a common account execute to the process. If anything goes wrong, our team will need the exchange address and memo  to give the funds back to its owner. 
+		- The MEMO of the main and the alternative methods are different. If any user send funds using the wrong memo, the procedure won’t be completed.`,
 
 
 	HOW_MUCH_EOS: `It takes enough EOS to guarantee CPU, NET & RAM resources for the user’s 				account.
@@ -288,9 +290,13 @@ module.exports = {
 		Like EOS, Telos will be a public platform for decentralized applications with incredible scaling potential owing to its advanced technology and delegated proof-of-stake (DPOS) consensus algorithm. Furthermore, it’s being designed to provide EOS mainnet interoperability. At a very high-level, its governance structure will also be similar and Telos will have the same crucial ability to enact the “intent of Code is Law” concept to help avoid critical failures that led to incidents like the Parity wallet hack in 2017.
 		Here goes a link to their Youtube channel to get more information about the sisterchain: https://www.youtube.com/channel/UC1eRSAt81jUf7zM4hsy5S5Q/videos`,
 
-	YES: `"EOS Rio team is glad for helping you out! Feel free to contact our support team if any doubt remains and vote for us as BP so we can keep the good work =)"`,
+	YES: `EOS Rio team is glad for helping you out! Feel free to contact our support team if any doubt remains and help us continue funding this projects by voting for us as Block Producers :)`,
 
-	NO: `SORRY! =(`
+	ASK: `Ops, sorry for that =(
+		We will do our best to improve the solutions available. 
+		Meanwhile, please type your doubts here:`,
+
+	SUPPORT: `The support team will receive your question and will come up with an answer as soon as possible.`
 
 
 };

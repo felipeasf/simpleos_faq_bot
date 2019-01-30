@@ -10,13 +10,15 @@ const options = require('./options');
 
 //BOT
 const bot = new Telegraf(config.telegram.botToken);
-//bot.use(Telegraf.log())
+bot.use(Telegraf.log())
 bot.use(session());
 
 //Mongodb
 const MongoClient = require('mongodb').MongoClient;
 const client = new MongoClient(config.mongodb.db_url, {useNewUrlParser: true});
 let feedbacks;
+let user;
+let flag;
 
 client.connect(function (err) {
     console.log("Connected successfully to server");
@@ -31,8 +33,6 @@ bot.start((ctx) => ctx.reply(strings.HI_MSG, Markup
     .keyboard([[options.OPTION1, options.OPTION2, options.OPTION3], [options.OPTION4, options.OPTION5, options.OPTION6], [options.OPTION7, options.OPTION8, options.OPTION9], [options.OPTION10, options.OPTION11, options.OPTION12], [options.OPTION13, options.OPTION14]])
     .resize()
     .extra()));
-
-bot.on('sticker', (ctx) => ctx.reply('👍'))
 
 //ACC MENU
 bot.hears(options.OPTION1, (ctx) => ctx.reply(strings.CONCERN, Markup
@@ -345,26 +345,22 @@ bot.hears(options.OPTION13, (ctx) => ctx.reply(strings.CONCERN, Markup
     .extra()));
 
 //SISTER CHAIN ANSWERS
-bot.hears(options.SIS_OPT1, (ctx) => (ctx) => ctx.reply(strings.REASONS + options.SATISFACTION, Markup.inlineKeyboard([
+bot.hears(options.SIS_OPT1, (ctx) => ctx.reply(strings.WORBLI + options.SATISFACTION, Markup.inlineKeyboard([
       Markup.callbackButton('Yes', 'Yes'),
       Markup.callbackButton('No', 'No')
     ]).extra()));
-bot.hears(options.SIS_OPT2, (ctx) => (ctx) => ctx.reply(strings.REASONS + options.SATISFACTION, Markup.inlineKeyboard([
+bot.hears(options.SIS_OPT2, (ctx) => ctx.reply(strings.BOS + options.SATISFACTION, Markup.inlineKeyboard([
       Markup.callbackButton('Yes', 'Yes'),
       Markup.callbackButton('No', 'No')
     ]).extra()));
-bot.hears(options.SIS_OPT3, (ctx) => (ctx) => ctx.reply(strings.REASONS + options.SATISFACTION, Markup.inlineKeyboard([
+bot.hears(options.SIS_OPT3, (ctx) => ctx.reply(strings.JUNGLE + options.SATISFACTION, Markup.inlineKeyboard([
       Markup.callbackButton('Yes', 'Yes'),
       Markup.callbackButton('No', 'No')
     ]).extra()));
-bot.hears(options.SIS_OPT4, (ctx) => (ctx) => ctx.reply(strings.REASONS + options.SATISFACTION, Markup.inlineKeyboard([
+bot.hears(options.SIS_OPT4, (ctx) => ctx.reply(strings.TELOS + options.SATISFACTION, Markup.inlineKeyboard([
       Markup.callbackButton('Yes', 'Yes'),
       Markup.callbackButton('No', 'No')
     ]).extra()));
-
-//teste
-//bot.hears(options.OPTION14, (ctx) => bot.telegram.sendMessage(-304109032, "teste"));
-bot.hears(options.OPTION14, (ctx) => bot.telegram.forwardMessage(-304109032,"282771136" ,837));
 
 //RETURN BUTTONS
 bot.hears(options.RETURN_TO_MAIN, (ctx) => ctx.reply(strings.HI_MSG, Markup
@@ -384,9 +380,31 @@ bot.action("Yes", (ctx) => {
 })
 
 bot.action("No", (ctx) => {
+    flag = false;
     var date = new Date(Date.now()).toLocaleString();
-    feedbacks.insertOne({name: ctx.from.username, userid: ctx.from.id, date: date, rate: 0});
-    return ctx.reply(strings.NO);
+    user = ctx.from.id
+    feedbacks.insertOne({name: ctx.from.username, userid: user, date: date, rate: 0});
+    ctx.reply(strings.ASK);
+    bot.on('text', (ctx) => {
+      if(flag)
+      {
+        return
+      } 
+      else { 
+        let question = "UserId: " + ctx.from.id + "\nQuestion: " + ctx.message.text;
+        //bot.telegram.forwardMessage(config.support.chatId, user, "userId: " + ctx.message.message_id);
+        bot.telegram.sendMessage(config.support.chatId, question);
+        flag = true;
+        return ctx.reply(strings.SUPPORT);
+      }
+    });
+})
+
+//REPLY COMMAND
+bot.command("reply", (ctx) => {
+  let split = ctx.message.text.split(" ");
+  let reply = ctx.message.text.substr(6 + split[1].length + 2);
+  bot.telegram.sendMessage(split[1], "Support Team: " + reply);
 })
 
 bot.startPolling();
