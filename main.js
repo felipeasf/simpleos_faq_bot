@@ -388,7 +388,7 @@ bot.hears("No", (ctx) => {
         return
       } 
       else { 
-        let question = "UserId: " + ctx.from.id + "\nQuestion: " + ctx.message.text;
+        let question = "Username: " + ctx.form.username +  "\nUserId: " + ctx.from.id + "\nQuestion: " + ctx.message.text;
         bot.telegram.sendMessage(config.support.chatId, question);
         flag = true;
         return ctx.reply(strings.SUPPORT + strings.START);
