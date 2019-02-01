@@ -296,7 +296,9 @@ module.exports = {
 		We will do our best to improve the solutions available. 
 		Meanwhile, please type your question here:`,
 
-	SUPPORT: `The support team will receive your question and will come up with an answer as soon as possible.`,
+	SUPPORT: `The support team will receive your question and will come up with an answer as soon as possible. You gonna receive the answer here! =)`,
+
+	SATISFACTION: "\n\nWas this answer useful?",
 
 	START: `\n\nType /start if you want to talk again!`
 

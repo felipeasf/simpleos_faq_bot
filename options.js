@@ -103,7 +103,6 @@ module.exports = {
 	RETURN_TO_ACC: "Return to Accounts Menu",
 
 	//DEFAULT MSGS
-	CONTACT_SUPPORT: "Contact Support",
-	SATISFACTION: "\n\nWas this answer useful?"
+	CONTACT_SUPPORT: "Contact Support"
 
 };
