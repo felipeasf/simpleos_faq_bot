@@ -39,34 +39,45 @@ bot.hears(options.OPTION1, (ctx) => ctx.reply(strings.CONCERN, Markup
     .extra()));
 
 //ACC ANSWERS
-bot.hears(options.ACC_OPT1, (ctx) => ctx.reply(strings.FIRST_ACC + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.ACC_OPT2, (ctx) => ctx.reply(strings.ANOTHER_ACC + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.ACC_OPT4, (ctx) => ctx.reply(strings.ALT_METHOD + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.ACC_OPT5, (ctx) => ctx.reply(strings.HOW_MUCH_EOS + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.ACC_OPT6, (ctx) => ctx.reply(strings.CPU + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.ACC_OPT7, (ctx) => ctx.reply(strings.NET + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.ACC_OPT8, (ctx) => ctx.reply(strings.NET + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
+bot.hears(options.ACC_OPT1, async (ctx) => { 
+  await ctx.reply(strings.FIRST_ACC);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.ACC_OPT2, async (ctx) => { 
+  await ctx.reply(strings.ANOTHER_ACC);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.ACC_OPT3, async (ctx) => { 
+  await ctx.reply(strings.ERROR_NEW_ACC);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.ACC_OPT4, async (ctx) => { 
+  await ctx.reply(strings.ALT_METHOD);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.ACC_OPT5, async (ctx) => { 
+  await ctx.reply(strings.HOW_MUCH_EOS);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.ACC_OPT6, async (ctx) => { 
+  await ctx.reply(strings.CPU);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.ACC_OPT7, async (ctx) => { 
+  await ctx.reply(strings.NET);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.ACC_OPT8, async (ctx) => { 
+  await ctx.reply(strings.RAM);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
 
 //ACC ERR MENU
 bot.hears(options.ACC_OPT3, (ctx)=> ctx.reply(strings.ERROR_NEW_ACC, Markup
@@ -75,14 +86,15 @@ bot.hears(options.ACC_OPT3, (ctx)=> ctx.reply(strings.ERROR_NEW_ACC, Markup
     .extra()));
 
 //ACC ERR ANSWERS
-bot.hears(options.NEW_ACC_ERR_OP1, (ctx) => ctx.reply(strings.DURING_AVAILABILITY + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.NEW_ACC_ERR_OP2, (ctx) => ctx.reply(strings.EOSIO_ASSERT + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
+bot.hears(options.NEW_ACC_ERR_OP1, async (ctx) => { 
+  await ctx.reply(strings.DURING_AVAILABILITY);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.NEW_ACC_ERR_OP2, async (ctx) => { 
+  await ctx.reply(strings.EOSIO_ASSERT);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
 
 //SECURITY MENU
 bot.hears(options.OPTION2, (ctx) => ctx.reply(strings.CONCERN, Markup
@@ -91,22 +103,25 @@ bot.hears(options.OPTION2, (ctx) => ctx.reply(strings.CONCERN, Markup
     .extra()));
 
 //SECURITY ANSWERS
-bot.hears(options.SECURITY_OPT1, (ctx) => ctx.reply(strings.SIMPLEOS_SAFE + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.SECURITY_OPT2, (ctx) => ctx.reply(strings.ENDORSED + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.SECURITY_OPT3, (ctx) => ctx.reply(strings.ENDORSED + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.SECURITY_OPT4, (ctx) => ctx.reply(strings.EOS_LINK + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
+bot.hears(options.SECURITY_OPT1, async (ctx) => { 
+  await ctx.reply(strings.SIMPLEOS_SAFE);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.SECURITY_OPT2, async (ctx) => { 
+  await ctx.reply(strings.ENDORSED);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.SECURITY_OPT3, async (ctx) => { 
+  await ctx.reply(strings.EXTERNAL);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.SECURITY_OPT4, async (ctx) => { 
+  await ctx.reply(strings.EOS_LINK);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
 
 //STAKE MENU
 bot.hears(options.OPTION3, (ctx) => ctx.reply(strings.CONCERN, Markup
@@ -115,34 +130,40 @@ bot.hears(options.OPTION3, (ctx) => ctx.reply(strings.CONCERN, Markup
     .extra()));
 
 //STAKE ANSWERS
-bot.hears(options.STAKE_OPT1, (ctx) => ctx.reply(strings.STUCK + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.STAKE_OPT2, (ctx) => ctx.reply(strings.HOW_STAKE + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.STAKE_OPT3, (ctx) => ctx.reply(strings.WHY_STAKE + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.STAKE_OPT4, (ctx) => ctx.reply(strings.CPU_NET_RATE + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.STAKE_OPT5, (ctx) => ctx.reply(strings.WHY_UNSTAKE + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.STAKE_OPT6, (ctx) => ctx.reply(strings.UNSTAKE_100 + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.STAKE_OPT7, (ctx) => ctx.reply(strings.LEAVE_1_EOS + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
+bot.hears(options.STAKE_OPT1, async (ctx) => { 
+  await ctx.reply(strings.STUCK);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.STAKE_OPT2, async (ctx) => { 
+  await ctx.reply(strings.HOW_STAKE);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.STAKE_OPT3, async (ctx) => { 
+  await ctx.reply(strings.WHY_STAKE);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.STAKE_OPT4, async (ctx) => { 
+  await ctx.reply(strings.CPU_NET_RATE);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.STAKE_OPT5, async (ctx) => { 
+  await ctx.reply(strings.WHY_UNSTAKE);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.STAKE_OPT6, async (ctx) => { 
+  await ctx.reply(strings.UNSTAKE_100);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.STAKE_OPT7, async (ctx) => { 
+  await ctx.reply(strings.LEAVE_1_EOS);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
 
 //TRANSFERS MENU
 bot.hears(options.OPTION4, (ctx) => ctx.reply(strings.CONCERN, Markup
@@ -151,22 +172,25 @@ bot.hears(options.OPTION4, (ctx) => ctx.reply(strings.CONCERN, Markup
     .extra()));
 
 //TRANSFERS ANSWERS
-bot.hears(options.TRANS_OPT1, (ctx) => ctx.reply(strings.EOS_TO_EXCHANGE + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.TRANS_OPT2, (ctx) => ctx.reply(strings.EXCHANGE_TO_EOS + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.TRANS_OPT3, (ctx) => ctx.reply(strings.ADDRESS + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.TRANS_OPT4, (ctx) => ctx.reply(strings.AIRDROP + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
+bot.hears(options.TRANS_OPT1, async (ctx) => { 
+  await ctx.reply(strings.EOS_TO_EXCHANGE);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.TRANS_OPT2, async (ctx) => { 
+  await ctx.reply(strings.EXCHANGE_TO_EOS);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.TRANS_OPT3, async (ctx) => { 
+  await ctx.reply(strings.ADDRESS);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
+
+bot.hears(options.TRANS_OPT4, async (ctx) => { 
+  await ctx.reply(strings.AIRDROP);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+})
 
 //PIN AND PASSWORD MENU
 bot.hears(options.OPTION5, (ctx) => ctx.reply(strings.CONCERN, Markup
@@ -175,26 +199,30 @@ bot.hears(options.OPTION5, (ctx) => ctx.reply(strings.CONCERN, Markup
     .extra()));
 
 //PIN AND PASSWORD ANSWERS
-bot.hears(options.PIN_PSWD_OP1, (ctx) => ctx.reply(strings.WHAT_PIN + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.PIN_PSWD_OP2, (ctx) => ctx.reply(strings.FORGOT_PIN + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.PIN_PSWD_OP3, (ctx) => ctx.reply(strings.SET_PIN + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.PIN_PSWD_OP4, (ctx) => ctx.reply(strings.WHAT_PASSWORD + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.PIN_PSWD_OP5, (ctx) => ctx.reply(strings.FORGOT_PASSWORD + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
+bot.hears(options.PIN_PSWD_OP1, async (ctx) => { 
+  await ctx.reply(strings.WHAT_PIN);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.PIN_PSWD_OP2, async (ctx) => { 
+  await ctx.reply(strings.FORGOT_PIN);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.PIN_PSWD_OP3, async (ctx) => { 
+  await ctx.reply(strings.SET_PIN);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.PIN_PSWD_OP4, async (ctx) => { 
+  await ctx.reply(strings.WHAT_PASSWORD);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.PIN_PSWD_OP5, async (ctx) => { 
+  await ctx.reply(strings.FORGOT_PASSWORD);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
 
 //KEYS MENU
 bot.hears(options.OPTION6, (ctx) => ctx.reply(strings.CONCERN, Markup
@@ -203,22 +231,25 @@ bot.hears(options.OPTION6, (ctx) => ctx.reply(strings.CONCERN, Markup
     .extra()));
 
 //KEYS ANSWERS
-bot.hears(options.KEYS_OPT1, (ctx) => ctx.reply(strings.OWNER_PRIVATE + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.KEYS_OPT2, (ctx) => ctx.reply(strings.ANOTHER_KEY + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.KEYS_OPT3, (ctx) => ctx.reply(strings.CHANGE_NAME + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.KEYS_OPT4, (ctx) => ctx.reply(strings.MORE_WALLETS + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
+bot.hears(options.KEYS_OPT1, async (ctx) => { 
+  await ctx.reply(strings.OWNER_PRIVATE);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.KEYS_OPT2, async (ctx) => { 
+  await ctx.reply(strings.ANOTHER_KEY);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.KEYS_OPT3, async (ctx) => { 
+  await ctx.reply(strings.CHANGE_NAME);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.KEYS_OPT4, async (ctx) => { 
+  await ctx.reply(strings.MORE_WALLETS);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
 
 //TROUBLESHOOTING MENU
 bot.hears(options.OPTION7, (ctx) => ctx.reply(strings.CONCERN, Markup
@@ -227,18 +258,20 @@ bot.hears(options.OPTION7, (ctx) => ctx.reply(strings.CONCERN, Markup
     .extra()));
 
 //TROUBLESHOOTING ANSWERS
-bot.hears(options.TROUBLE_OPT1, (ctx) => ctx.reply(strings.SPINNING + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.TROUBLE_OPT2, (ctx) => ctx.reply(strings.EXCEED + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.TROUBLE_OPT3, (ctx) => ctx.reply(strings.NOTHING + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
+bot.hears(options.TROUBLE_OPT1, async (ctx) => { 
+  await ctx.reply(strings.SPINNING);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.TROUBLE_OPT2, async (ctx) => { 
+  await ctx.reply(strings.EXCEED);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.TROUBLE_OPT3, async (ctx) => { 
+  await ctx.reply(strings.NOTHING);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
 
 //REFERENDUM MENU
 bot.hears(options.OPTION8, (ctx) => ctx.reply(strings.CONCERN, Markup
@@ -247,18 +280,20 @@ bot.hears(options.OPTION8, (ctx) => ctx.reply(strings.CONCERN, Markup
     .extra()));
 
 //REFERENDUM ANSWERS
-bot.hears(options.REF_OPT1, (ctx) => ctx.reply(strings.VOTING + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.REF_OPT2, (ctx) => ctx.reply(strings.APPROVED + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.REF_OPT3, (ctx) => ctx.reply(strings.CREATE + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
+bot.hears(options.REF_OPT1, async (ctx) => { 
+  await ctx.reply(strings.VOTING);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.REF_OPT2, async (ctx) => { 
+  await ctx.reply(strings.APPROVED);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.REF_OPT3, async (ctx) => { 
+  await ctx.reply(strings.CREATE);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
 
 //ROADMAP MENU
 bot.hears(options.OPTION9, (ctx) => ctx.reply(strings.CONCERN, Markup
@@ -267,14 +302,15 @@ bot.hears(options.OPTION9, (ctx) => ctx.reply(strings.CONCERN, Markup
     .extra()));
 
 //ROADMAP ANSWERS
-bot.hears(options.ROADMAP_OPT1, (ctx) => ctx.reply(strings.TWO_FA + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.ROADMAP_OPT2, (ctx) => ctx.reply(strings.ROADMAP + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
+bot.hears(options.ROADMAP_OPT1, async (ctx) => { 
+  await ctx.reply(strings.TWO_FA);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.ROADMAP_OPT2, async (ctx) => { 
+  await ctx.reply(strings.ROADMAP);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
 
 //AIRDROPS MENU
 bot.hears(options.OPTION10, (ctx) => ctx.reply(strings.CONCERN, Markup
@@ -283,22 +319,25 @@ bot.hears(options.OPTION10, (ctx) => ctx.reply(strings.CONCERN, Markup
     .extra()));
 
 //AIRDROPS ANSWERS
-bot.hears(options.AIRDROP_OP1, (ctx) => ctx.reply(strings.BALANCE + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.AIRDROP_OP2, (ctx) => ctx.reply(strings.NO_AIRDROPS + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.AIRDROP_OP3, (ctx) => ctx.reply(strings.TOKEN_VALUE + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.AIRDROP_OP4, (ctx) => ctx.reply(strings.TRANSFER + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
+bot.hears(options.AIRDROP_OP1, async (ctx) => { 
+  await ctx.reply(strings.BALANCE);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.AIRDROP_OP2, async (ctx) => { 
+  await ctx.reply(strings.NO_AIRDROPS);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.AIRDROP_OP3, async (ctx) => { 
+  await ctx.reply(strings.TOKEN_VALUE);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.AIRDROP_OP4, async (ctx) => { 
+  await ctx.reply(strings.TRANSFER);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
 
 //UPDATES MENU
 bot.hears(options.OPTION11, (ctx) => ctx.reply(strings.CONCERN, Markup
@@ -307,18 +346,20 @@ bot.hears(options.OPTION11, (ctx) => ctx.reply(strings.CONCERN, Markup
     .extra()));
 
 //UPDATES ANSWERS
-bot.hears(options.UPDATE_OP1, (ctx) => ctx.reply(strings.NEW_VERSION + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.UPDATE_OP2, (ctx) => ctx.reply(strings.UPDATE_BUTTON + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.UPDATE_OP3, (ctx) => ctx.reply(strings.HOW_UPDATE + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
+bot.hears(options.UPDATE_OP1, async (ctx) => { 
+  await ctx.reply(strings.NEW_VERSION);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.UPDATE_OP2, async (ctx) => { 
+  await ctx.reply(strings.UPDATE_BUTTON);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.UPDATE_OP3, async (ctx) => { 
+  await ctx.reply(strings.HOW_UPDATE);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
 
 //WHO WE ARE MENU
 bot.hears(options.OPTION12, (ctx) => ctx.reply(strings.CONCERN, Markup
@@ -327,14 +368,15 @@ bot.hears(options.OPTION12, (ctx) => ctx.reply(strings.CONCERN, Markup
     .extra()));
 
 //WHO WE ARE ANSWERS
-bot.hears(options.WWA_OPT1, (ctx) => ctx.reply(strings.WHO + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.WWA_OPT2, (ctx) => ctx.reply(strings.REASONS + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
+bot.hears(options.WWA_OPT1, async (ctx) => { 
+  await ctx.reply(strings.WHO);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.WWA_OPT2, async (ctx) => { 
+  await ctx.reply(strings.WHO);
+  await ctx.reply(strings.REASONS, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
 
 //SISTER CHAIN MENU
 bot.hears(options.OPTION13, (ctx) => ctx.reply(strings.CONCERN, Markup
@@ -343,22 +385,25 @@ bot.hears(options.OPTION13, (ctx) => ctx.reply(strings.CONCERN, Markup
     .extra()));
 
 //SISTER CHAIN ANSWERS
-bot.hears(options.SIS_OPT1, (ctx) => ctx.reply(strings.WORBLI + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.SIS_OPT2, (ctx) => ctx.reply(strings.BOS + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.SIS_OPT3, (ctx) => ctx.reply(strings.JUNGLE + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
-bot.hears(options.SIS_OPT4, (ctx) => ctx.reply(strings.TELOS + strings.SATISFACTION, Markup
-    .keyboard([['Yes', 'No']])
-    .resize()
-    .extra()));
+bot.hears(options.SIS_OPT1, async (ctx) => {
+  await ctx.reply(strings.WORBLI);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.SIS_OPT2, async (ctx) => {
+  await ctx.reply(strings.BOS);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.SIS_OPT3, async (ctx) => {
+  await ctx.reply(strings.JUNGLE);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.SIS_OPT4, async (ctx) => {
+  await ctx.reply(strings.TELOS);
+  await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
 
 //RETURN BUTTONS
 bot.hears(options.RETURN_TO_MAIN, (ctx) => ctx.reply(strings.HI_MSG, Markup
