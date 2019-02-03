@@ -292,9 +292,10 @@ module.exports = {
 
 	YES: `EOS Rio team is glad for helping you out! Feel free to contact our support team if any doubt remains and help us continue funding this projects by voting for us as Block Producers :)`,
 
-	ASK: `Ops, sorry for that =(
-		We will do our best to improve the solutions available. 
-		Meanwhile, please type your question here:`,
+	SORRY: `Ops, sorry for that =(
+		We will do our best to improve the solutions available.`,
+
+	ASK: `\nMeanwhile, please type your question here:`,
 
 	SUPPORT: `The support team will receive your question and will come up with an answer as soon as possible. You gonna receive the answer here! =)`,
 

@@ -16,6 +16,7 @@ const bot = new Telegraf(config.telegram.botToken);
 const MongoClient = require('mongodb').MongoClient;
 const client = new MongoClient(config.mongodb.db_url, {useNewUrlParser: true});
 let feedbacks;
+let blacklist;
 let flag;
 
 client.connect(function (err) {
@@ -23,6 +24,7 @@ client.connect(function (err) {
 
     const db = client.db(config.mongodb.db_name);
     feedbacks = db.collection("feedbacks");
+    blacklist = db.collection("blacklist");
 
 });
 
@@ -417,28 +419,32 @@ bot.hears(options.RETURN_TO_ACC, (ctx) => ctx.reply(strings.CONCERN, Markup
 
 //FEEDBACK
 bot.hears("Yes", (ctx) => {
-    var date = new Date(Date.now()).toLocaleString();
-    feedbacks.insertOne({name: ctx.from.username, userid: ctx.from.id, date: date, rate: 1});
-    return ctx.reply(strings.YES + strings.START, Markup.removeKeyboard().extra());
+  var date = new Date(Date.now()).toLocaleString();
+  feedbacks.insertOne({name: ctx.from.username, userid: ctx.from.id, date: date, rate: 1});
+  return ctx.reply(strings.YES + strings.START, Markup.removeKeyboard().extra());
 })
 
 bot.hears("No", (ctx) => {
+  check_blacklist(ctx.from.id).then(function(notBlacklisted){
     flag = false;
     let date = new Date(Date.now()).toLocaleString();
     feedbacks.insertOne({name: ctx.from.username, userid: ctx.from.id, date: date, rate: 0});
-    ctx.reply(strings.ASK, Markup.removeKeyboard().extra());
+    ctx.reply(strings.SORRY + strings.ASK, Markup.removeKeyboard().extra());
     bot.on('text', (ctx) => {
       if(flag)
       {
-        return
+        return;
       } 
       else { 
         let question = "Username: " + ctx.from.username +  "\nUserId: " + ctx.from.id + "\nQuestion: " + ctx.message.text;
         bot.telegram.sendMessage(config.support.chatId, question);
         flag = true;
-        return ctx.reply(strings.SUPPORT + strings.START);
+        
       }
     });
+  }).catch(function(blacklisted){
+    return ctx.reply(strings.SORRY + strings.START);
+  })
 })
 
 //REPLY COMMAND
@@ -456,5 +462,35 @@ bot.command("reply", (ctx) => {
     .extra());
   }
 })
+
+//blacklist COMMAND
+bot.command("blacklist", (ctx) => {
+  let split = ctx.message.text.split(" ");
+  if(isNaN(split[1]) || split.length < 2)
+  {
+    return ctx.reply("Usage: /blacklist {userid}");
+  }
+  else{
+    blacklist.insertOne({userid: split[1]});
+    return ctx.reply(split[1] + " blacklisted");
+  }
+})
+
+let check_blacklist = function(userid){
+  return new Promise(function(resolve, reject){
+    blacklist.find({}).toArray((err, result) => {
+      if(!err){
+        if(result){
+          let isBlacklisted = result.filter(function(value){ return value.userid == userid; });
+          if(isBlacklisted.length == 0){
+            resolve();
+          }else{
+            reject();
+          }
+        }
+      }
+    });
+  });
+}
 
 bot.startPolling();
