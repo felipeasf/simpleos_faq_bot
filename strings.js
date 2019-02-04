@@ -1,8 +1,8 @@
 module.exports = {
 	HI_MSG: `Welcome to SimplEOS FAQ Bot
-		How can I help you?`,
+		What does your issue concern?`,
 
-	CONCERN: "What does your issue concern?",
+	CONCERN: "How can I help you?",
 
 	//ACC
 	FIRST_ACC: `Here goes a tutorial on how to create a new account. If it does not work, go for 		""Previous Optios"" and select ""Alternative Method"" or ""Contact Support""
