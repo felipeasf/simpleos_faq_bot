@@ -1,6 +1,6 @@
 module.exports = {
 	HI_MSG: `Welcome to SimplEOS FAQ Bot
-		What does your issue concern?`,
+		How can I help you?`,
 
 	CONCERN: "What does your issue concern?",
 
