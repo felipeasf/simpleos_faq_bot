@@ -301,7 +301,25 @@ module.exports = {
 
 	SATISFACTION: "\n\nWas this answer useful?",
 
-	START: `\n\nType /start if you want to talk again!`
+	TYPE_NO: "\nType No if you want to send another question.",
 
+	START: `\n\nType /start if you want to talk again!`,
+
+	HELP: `Available Commands:
+		/start - start using the bot
+		/help - to show command list`,
+
+	HELP_ADMIN: `General Commands:
+		/start - start using the bot
+		/help - to show command list
+
+		ADMIN Commands:
+		/analytics - Get bot analytics
+
+		/blaclist - blacklist a user
+		Usage: /blacklist {userid}
+
+		/reply - reply a message from user
+		Usage: /reply {userId} message`
 
 };
