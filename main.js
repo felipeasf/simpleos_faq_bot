@@ -462,7 +462,7 @@ bot.help((ctx) => {
         ctx.reply(strings.HELP_ADMIN);
     }
     else{
-        ctx.reply(strings.HELP);
+        ctx.reply(strings.HELP.trim());
     }
 
 })

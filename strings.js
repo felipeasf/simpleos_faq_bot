@@ -305,18 +305,25 @@ module.exports = {
 
 	START: `\n\nType /start if you want to talk again!`,
 
-	HELP: `Available Commands:
-		/start - start using the bot
-		/help - to show command list`,
+	HELP: `Hey! =)
+	This bot is here to help you understand bullet points about SimplEOS and EOS Rio.
+	You'll find a few options as buttons where you keyboard should appear after typing /start . To clarify your doubts, just click on them to receive demystifeid information about each topic.
+	If any issues remain cloudy, there's no need to worry at all. Just type your doubts to our bot and our support team will answer you.
+	At the end of your query, just press "YES" to let us know we could help you somehow. Every feedback is always welcome. 
+	Best regards,
+	EOS Rio team.
+
+	Type /start to start using the bot.`,
 
 	HELP_ADMIN: `General Commands:
-		/start - start using the bot
-		/help - to show command list
+	/start - start using the bot
+	/help - to show command list
 
-		ADMIN Commands:
-		/analytics - Get bot analytics
+	ADMIN Commands:
+	/analytics - Get bot analytics
+	/blacklist - blacklist a user
+	Usage: /blacklist {userid}
 
-		/blaclist - blacklist a user
-		Usage: /blacklist {userid}`
+	To answer a user just reply the message from bot!`
 
 };
