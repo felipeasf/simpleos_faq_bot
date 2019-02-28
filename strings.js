@@ -299,9 +299,9 @@ module.exports = {
 
 	SUPPORT: `The support team will receive your question and will come up with an answer as soon as possible. You gonna receive the answer here! =)`,
 
-	SATISFACTION: "\n\nWas this answer useful?",
+	SATISFACTION: `\n\nWas this answer useful?`,
 
-	TYPE_NO: "\nType No if you want to send another question.",
+	TYPE_NO: `\nType "No" if you want to send another question.`,
 
 	START: `\n\nType /start if you want to talk again!`,
 
@@ -317,9 +317,6 @@ module.exports = {
 		/analytics - Get bot analytics
 
 		/blaclist - blacklist a user
-		Usage: /blacklist {userid}
-
-		/reply - reply a message from user
-		Usage: /reply {userId} message`
+		Usage: /blacklist {userid}`
 
 };

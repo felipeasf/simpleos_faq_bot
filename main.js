@@ -14,10 +14,12 @@ const bot = new Telegraf(config.telegram.botToken);
 
 //Mongodb
 const MongoClient = require('mongodb').MongoClient;
+var ObjectID = require('mongodb').ObjectID;
 const client = new MongoClient(config.mongodb.db_url, {useNewUrlParser: true});
 let feedbacks;
 let blacklist;
 let flag = true;
+let entryId;
 
 client.connect(function (err) {
         console.log("Connected successfully to server");
@@ -29,10 +31,21 @@ client.connect(function (err) {
 });
 
 //MAIN MENU
-bot.start((ctx) => ctx.reply(strings.HI_MSG, Markup
+bot.start((ctx) => { 
+
+    var date = new Date(Date.now()).toLocaleString();
+
+    feedbacks.insertOne({name: ctx.from.username, userid: ctx.from.id, date: date, rate: 0}, function(err,result){
+        entryId = result["ops"][0]["_id"];
+        });
+
+    return ctx.reply(strings.HI_MSG, Markup
         .keyboard([[options.OPTION1, options.OPTION2, options.OPTION3], [options.OPTION4, options.OPTION5, options.OPTION6], [options.OPTION7, options.OPTION8, options.OPTION9], [options.OPTION10, options.OPTION11, options.OPTION12, options.OPTION13]])
         .resize()
-        .extra()));
+        .extra());
+
+});
+
 
 //ACC MENU
 bot.hears(options.OPTION1, (ctx) => ctx.reply(strings.CONCERN, Markup
@@ -41,7 +54,7 @@ bot.hears(options.OPTION1, (ctx) => ctx.reply(strings.CONCERN, Markup
         .extra()));
 
 //ACC ANSWERS
-bot.hears(options.ACC_OPT1, async (ctx) => { 
+bot.hears(options.ACC_OPT1, async (ctx) => {
     await ctx.reply(strings.FIRST_ACC);
     await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
 })
@@ -420,7 +433,7 @@ bot.hears(options.RETURN_TO_ACC, (ctx) => ctx.reply(strings.CONCERN, Markup
 //FEEDBACK
 bot.hears("Yes", (ctx) => {
     var date = new Date(Date.now()).toLocaleString();
-    feedbacks.insertOne({name: ctx.from.username, userid: ctx.from.id, date: date, rate: 1});
+    feedbacks.updateOne({_id: ObjectID(entryId)}, {$set:{rate: 1}});
     return ctx.reply(strings.YES + strings.START, Markup.removeKeyboard().extra());
 })
 
@@ -428,20 +441,8 @@ bot.hears("No", (ctx) => {
     check_blacklist(ctx.from.id).then(function(notBlacklisted){
         flag = false;
         let date = new Date(Date.now()).toLocaleString();
-        feedbacks.insertOne({name: ctx.from.username, userid: ctx.from.id, date: date, rate: 0});
+        feedbacks.updateOne({_id: ObjectID(entryId)}, {$set:{rate: 2}});
         ctx.reply(strings.SORRY + strings.ASK, Markup.removeKeyboard().extra());
-        // bot.on('text', (ctx) => {
-        //     if(flag)
-        //     {
-        //         return;
-        //     } 
-        //     else { 
-        //         let question = "Username: " + ctx.from.username +  "\nUserId: " + ctx.from.id + "\nQuestion: " + ctx.message.text;
-        //         bot.telegram.sendMessage(config.support.chatId, question);
-        //         flag = true;
-                
-        //     }
-        // });
     }).catch(function(blacklisted){
         return ctx.reply(strings.SORRY + strings.START);
     })
@@ -460,17 +461,18 @@ bot.help((ctx) => {
 
 bot.on('text', (ctx) => {
     try{
-        console.log(ctx.message.reply_to_message);
         if(ctx.message.reply_to_message.from.is_bot == true){
-            let answer = ctx.message.reply_to_message.text.replace( /\n/g, " " ).split( " " )
-            return bot.telegram.sendMessage(answer[3], "Support Team: " + ctx.message.text + strings.SATISFACTION + strings.TYPE_NO, Markup
-        .keyboard([['Yes', 'No']])
-        .resize()
-        .extra());
-        }
+            if(ctx.chat.id == config.support.chatId){
+                let answer = ctx.message.reply_to_message.text.replace( /\n/g, " " ).split( " " )
+                return bot.telegram.sendMessage(answer[3], "Support Team: " + ctx.message.text + strings.SATISFACTION + strings.TYPE_NO, Markup
+                .keyboard([['Yes', 'No']])
+                .resize()
+                .extra());
+                }
+            }
     }
     catch(err){
-        console.log(err);
+        //do nothing
     }
     if(flag)
     {
@@ -483,22 +485,6 @@ bot.on('text', (ctx) => {
         
     }
 });
-
-//REPLY COMMAND
-bot.command("reply", (ctx) => {
-    let split = ctx.message.text.split(" ");
-    if(isNaN(split[1]) || split.length < 3)
-    {
-        ctx.reply("Usage: /reply {userId} message");
-    }
-    else{
-        let reply = ctx.message.text.substr(6 + split[1].length + 2);
-        return bot.telegram.sendMessage(split[1], "Support Team: " + reply + strings.SATISFACTION, Markup
-        .keyboard([['Yes', 'No']])
-        .resize()
-        .extra());
-    }
-})
 
 //blacklist COMMAND
 bot.command("blacklist", (ctx) => {
