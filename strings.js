@@ -311,9 +311,7 @@ module.exports = {
 	If any issues remain cloudy, there's no need to worry at all. Just type your doubts to our bot and our support team will answer you.
 	At the end of your query, just press "YES" to let us know we could help you somehow. Every feedback is always welcome. 
 	Best regards,
-	EOS Rio team.
-
-	Type /start to start using the bot.`,
+	EOS Rio team.`,
 
 	HELP_ADMIN: `General Commands:
 	/start - start using the bot
