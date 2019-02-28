@@ -433,7 +433,11 @@ bot.hears(options.RETURN_TO_ACC, (ctx) => ctx.reply(strings.CONCERN, Markup
 //FEEDBACK
 bot.hears("Yes", (ctx) => {
     var date = new Date(Date.now()).toLocaleString();
-    feedbacks.updateOne({_id: ObjectID(entryId)}, {$set:{rate: 1}});
+    feedbacks.updateOne({_id: ObjectID(entryId)}, {$set:{rate: 1}}, function(err){
+        if (err) {
+            console.log('Error updating object: ' + err);
+        }
+    });
     return ctx.reply(strings.YES + strings.START, Markup.removeKeyboard().extra());
 })
 
@@ -441,7 +445,11 @@ bot.hears("No", (ctx) => {
     check_blacklist(ctx.from.id).then(function(notBlacklisted){
         flag = false;
         let date = new Date(Date.now()).toLocaleString();
-        feedbacks.updateOne({_id: ObjectID(entryId)}, {$set:{rate: 2}});
+        feedbacks.updateOne({_id: ObjectID(entryId)}, {$set:{rate: 2}}, function(err){
+            if(err) {
+                console.log('Error updating object ' + err);
+            }
+        });
         ctx.reply(strings.SORRY + strings.ASK, Markup.removeKeyboard().extra());
     }).catch(function(blacklisted){
         return ctx.reply(strings.SORRY + strings.START);
