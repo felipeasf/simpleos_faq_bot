@@ -11,6 +11,10 @@ module.exports = {
 	
 	support: {
 		chatId: '-1001115548305'
+	},
+
+	analytics: {
+		excluded_acc: ['felipeasf', 'joaoocb', 'jailonaguiar', 'igorls', 'Canellas_EOSRio', 'prezende', 'luizhadad', 'domiscd', 'vtcuri', 'Rafamuniz']
 	}
 
 }

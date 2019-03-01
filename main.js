@@ -452,7 +452,7 @@ bot.hears("No", (ctx) => {
         });
         ctx.reply(strings.SORRY + strings.ASK, Markup.removeKeyboard().extra());
     }).catch(function(blacklisted){
-        return ctx.reply(strings.SORRY + strings.START);
+        return ctx.reply(strings.SORRY + strings.START, Markup.removeKeyboard().extra());
     })
 })
 
@@ -465,6 +465,30 @@ bot.help((ctx) => {
         ctx.reply(strings.HELP);
     }
 
+})
+
+//blacklist COMMAND
+bot.command("blacklist", (ctx) => {
+    if(ctx.chat.id == config.support.chatId){
+        let split = ctx.message.text.split(" ");
+        if(isNaN(split[1]) || split.length < 2)
+        {
+            return ctx.reply("Usage: /blacklist {userid}");
+        }
+        else{
+            blacklist.insertOne({userid: split[1]});
+            return ctx.reply(split[1] + " blacklisted");
+        }
+    }
+})
+
+//analytics command
+bot.command("analytics", (ctx) => {
+    if(ctx.chat.id == config.support.chatId){
+        Promise.all([get_total(), get_happy(), get_unhappy()]).then(result => {
+            return ctx.reply("📊 Usage report" + "\n\nTotal: " + result[0] + "\nSolved: " + result[1] + "\nUnsolved: " + result[2] + "\nNot rated: " + (result[0] - (result[1] + result[2])));
+        });
+    }
 })
 
 bot.on('text', (ctx) => {
@@ -494,25 +518,6 @@ bot.on('text', (ctx) => {
     }
 });
 
-//blacklist COMMAND
-bot.command("blacklist", (ctx) => {
-    let split = ctx.message.text.split(" ");
-    if(isNaN(split[1]) || split.length < 2)
-    {
-        return ctx.reply("Usage: /blacklist {userid}");
-    }
-    else{
-        blacklist.insertOne({userid: split[1]});
-        return ctx.reply(split[1] + " blacklisted");
-    }
-})
-
-bot.command("analytics", (ctx) => {
-    Promise.all([get_total(), get_happy()]).then(result => {
-        return ctx.reply("📊 Usage report" + "\n\nTotal: " + result[0] + "\nSolved: " + result[1] + "\nUnsolved: " + (result[0] - result[1]));
-    });
-})
-
 //check if user is blacklisted
 let check_blacklist = function(userid){
     return new Promise(function(resolve, reject){
@@ -534,7 +539,7 @@ let check_blacklist = function(userid){
 //get total usages from database
 let get_total = function(analytics){
     return new Promise(function(resolve){
-        feedbacks.find({}).count((err, result) => {
+        feedbacks.find({name:{$nin:config.analytics.excluded_acc}}).count((err, result) => {
             if(!err){
                 resolve(result);
             }
@@ -548,7 +553,21 @@ let get_total = function(analytics){
 //get problems solved (rate = 1)
 let get_happy = function(analytics){
     return new Promise(function(resolve){
-        feedbacks.find({rate:1}).count((err, result) => {
+        feedbacks.find({name:{$nin:config.analytics.excluded_acc}, rate:1}).count((err, result) => {
+            if(!err){
+                resolve(result);
+            }
+            else{
+                console.log("Error retrieving analytics data!");
+            }
+        });
+    });
+}
+
+//get problems solved (rate = 2)
+let get_unhappy = function(analytics){
+    return new Promise(function(resolve){
+        feedbacks.find({name:{$nin:config.analytics.excluded_acc}, rate:2}).count((err, result) => {
             if(!err){
                 resolve(result);
             }
