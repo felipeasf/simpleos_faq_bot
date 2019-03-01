@@ -1,7 +1,8 @@
 module.exports = {
 
 	telegram: {
-		botToken: '722054299:AAHS8tZhi2evXVAsJzF2l7XtdRy_bbSyTAA'
+		//botToken: '722054299:AAHS8tZhi2evXVAsJzF2l7XtdRy_bbSyTAA'
+		botToken: '760406965:AAEgTznkmKvFt7XRag0Y4oh1Jfg8QBT_kKo'
 	},
 
 	mongodb: {
@@ -10,7 +11,7 @@ module.exports = {
 	},
 	
 	support: {
-		chatId: '-1001115548305'
+		chatId: '-304109032'
 	},
 
 	analytics: {

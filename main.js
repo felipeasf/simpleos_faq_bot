@@ -483,7 +483,7 @@ bot.command("blacklist", (ctx) => {
 })
 
 //analytics command
-bot.command("analytics", (ctx) => {
+bot.command("stats", (ctx) => {
     if(ctx.chat.id == config.support.chatId){
         Promise.all([get_total(), get_happy(), get_unhappy()]).then(result => {
             return ctx.reply("📊 Usage report" + "\n\nTotal: " + result[0] + "\nSolved: " + result[1] + "\nUnsolved: " + result[2] + "\nNot rated: " + (result[0] - (result[1] + result[2])));
