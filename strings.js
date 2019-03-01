@@ -315,7 +315,7 @@ module.exports = {
 
 	HELP_ADMIN: `General Commands:
 	/start - start using the bot
-	/help - to show command list
+	/help - show the command list
 
 	ADMIN Commands:
 	/analytics - Get bot analytics
