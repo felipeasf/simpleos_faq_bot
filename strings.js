@@ -318,7 +318,7 @@ module.exports = {
 	/help - show the command list
 
 	ADMIN Commands:
-	/analytics - Get bot analytics
+	/stats - Get bot analytics
 	/blacklist - blacklist a user
 	Usage: /blacklist {userid}
 
