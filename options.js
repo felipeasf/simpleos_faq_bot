@@ -5,7 +5,7 @@ module.exports = {
 	OPTION3: "Stake / Unstake",
 	OPTION4: "Transfers",
 	OPTION5: "Pin & Password",
-	OPTION6: "Keys",
+	OPTION6: "Keys & Backup",
 	OPTION7: "Troubleshooting",
 	OPTION8: "Referendum",
 	OPTION9: "Roadmap",
@@ -14,6 +14,9 @@ module.exports = {
 	OPTION12: "Who We Are",
 	OPTION13: "Sister Chains",
 	//OPTION14: "Other",
+	OPTION15: "REX",
+	OPTION16: "Voting",
+	OPTION17: "Contracts",
 
 	//ACC MENU
 	ACC_OPT1: "Create First Account",
@@ -56,12 +59,15 @@ module.exports = {
 	PIN_PSWD_OP3: "How do I set my privacy pin?",
 	PIN_PSWD_OP4: "What's my password and what's its use?",
 	PIN_PSWD_OP5: "I forgot my password, what should I do?",
+	PIN_PSWD_OP6: "How can I change my password?",
 
-	//KEYS
+	//KEYS & BACKUP
 	KEYS_OPT1: "What's owner and active private key?",
 	KEYS_OPT2: "Can I add account associated to another key?",
 	KEYS_OPT3: "Will I be able to change account name?",
 	KEYS_OPT4: "Can I log into EOS wallets at the same time?",
+	KEYS_OPT5: "Does SimplEOS creates a backup automatically?",
+	KEYS_OPT6: "Does SimplEOS shows my private key?",
 
 	//TROUBLESHOOTING
 	TROUBLE_OPT1: "Wheel just keeps spinning. What should I do?",
@@ -97,6 +103,24 @@ module.exports = {
 	SIS_OPT2: "BOS",
 	SIS_OPT3: "Jungle",
 	SIS_OPT4: "Telos",
+
+	//REX
+	REX_OPT1: "What’s REX?",
+	REX_OPT2: "How can I see my daily gains?",
+	REX_OPT3: "What’s Liquid, Savings and Maturing?",
+	REX_OPT4: "If I buy REX, will I receive airdrops?",
+	REX_OPT5: "How can I borrow resources?",
+
+	//CONTRACTS
+	CONTRACTS_OPT1: "What is this?",
+	CONTRACTS_OPT2: "Why my action does not execute?",
+	CONTRACTS_OPT3: "How can I find a dApp contract?",
+	CONTRACTS_OPT4: "How do I know more about an action?",
+
+	//VOTING
+	VOTING_OPT1: "For REX, is there a voting requirement?",
+	VOTING_OPT2: "What does voting for a proxy means?",
+	VOTING_OPT3: "How can I know about my voting power decay?",
 
 	//RETURN MSGS
 	RETURN_TO_MAIN: "Return to Main Menu",

@@ -136,7 +136,7 @@ module.exports = {
 	EOS_LINK: `SimplEOS download links always come from our github`,
 
 	//STAKE
-	STUCK: `First thing is to check whether you're on SimplEOS latest version (0.7.1). If you're not on it, please update on  https://github.com/eosrio/simpleos/releases
+	STUCK: `First thing is to check whether you're on SimplEOS latest version (0.8.0). If you're not on it, please update on  https://github.com/eosrio/simpleos/releases
 		If you're on previous versions, that's usually an endpoint problem. It means the endpoint you are using has a high latency or that the network is congested. When you enter SimplEOS, the wallet automatically chooses the fastest endpoint to you, but sometimes this changes in the middle of the session. 
 		When this happens, close and reopen the wallet. Then go to configurations panel (cog symbol on the upper right corner). There, you will see endpoint options. Just click on one that you think is better or click ‘AUTO’ (this recalculates the latencies and chooses the best endpoint for them)`,
 
@@ -188,8 +188,10 @@ module.exports = {
 
 	FORGOT_PASSWORD: `We don’t keep any of your information and as such, we can’t help you recover the password. 
 		But don’t worry, you will have to ‘clear local data and logout’ on the configuration panel (cog symbol on the upper right corner), then you will be redirected to the first page to re-import your private keys and set a new password.`,
+		
+	CHANGE_PASSWORD: `After logged into SimplEOS, a user might search for the gear/cog in the upper right of the screen, where there’ll be a button named “Change” on the “Change Password” card. It will ask for the old and new password that will be registered and demanded to perform actions.`,
 
-	//KEYS
+	//KEYS & BACKUP
 	OWNER_PRIVATE: `Your owner key is like your master key. The owner key should be safeguarded and should not be used on any applications, as it can change your active key. 
 		Your active key is the key that should be used in applications, as it can be changed by the owner key if you feel it has been compromised.`,
 
@@ -201,19 +203,25 @@ module.exports = {
 	MORE_WALLETS: `Yes. The wallets are just interfaces to the blockchain. You can access your account using any other wallet or block explorer and see that your tokens are there. 
 		Different from other previous blockchains, your tokens are associated with your EOS account name.`,
 
+	AUTO_BACKUP: `For version 0.8.0 and up, SimplEOS creates an encrypted backup automatically on the user’s machine which can only be imported into SimplEOS.
+A user can export/import for a backup at anytime by going for the gear/cog at the upper right-hand and searching for “Backup” card.`,
+
+	SHOW_KEY: `For version 0.8.0 and up, if the user is logged in, she/he can ask for the private key going for the gear/cog at the upper right-hand and searching for “Backup” card.
+Attention: Your private key is the only access to your account, so it should always be kept in a safe place.`,
+
 	//TROUBLESHOOTING
-	SPINNING: `First, be sure you’ve updated the latest SimplEOS version. Bugs and connection issues might be solved on the new release. Here goes the link to download it: https://github.com/eosrio/simpleos/releases/tag/v0.7.1
+	SPINNING: `First, be sure you’ve updated the latest SimplEOS version. Bugs and connection issues might be solved on the new release. Here goes the link to download it: https://github.com/eosrio/simpleos/releases/tag/v0.8.0
 		When this happens, that’s usually an endpoint problem. It means the endpoint you are using has a high latency or that the network is congested. When you enter SimplEOS, the wallet automatically chooses the fastest endpoint to you, but sometimes this changes in the middle of the session. If this happens, try connecting to another endpoint. 
 		Go to the configurations panel (cog symbol on the upper right corner). There, you will see endpoint options. Just click on one that you think is better or click ‘AUTO’ (this recalculates the latencies and chooses the best endpoint for you)`,
 
-	EXCEED: `First, be sure you’ve updated the latest SimplEOS version. Bugs and connection issues might be solved on the new release. Here goes the link to download it: https://github.com/eosrio/simpleos/releases/tag/v0.7.1
+	EXCEED: `First, be sure you’ve updated the latest SimplEOS version. Bugs and connection issues might be solved on the new release. Here goes the link to download it: https://github.com/eosrio/simpleos/releases/tag/v0.8.0
 		The CPU resources depends on how much do you stake of your EOS ballance and on the Block Producer that is active during the measuring period. Please check on any block explorer if your consumption of CPU has come to exhaustion. If you've never used a block explorer before, here goes some examples:
 		bloks.io
 		eosflare.io
 		You'll just need to type your account name or your public key to verify the status of your account. Usually, this error message you received is shown when CPU resources are scarce.
 		The good news is: CPU recovers within time. However, it's hard to precise when because it's an average of your 3-previous-days consumption. Currently, it recovers after 24 hours. There's another solution for CPU, which requires staking more EOS. It will guarantee you more CPU and NET. If you're in a hurry and you don't want to stake more EOS, there's a website named cpuemergency.com that delegates CPU to your account for basic actions.`,
 
-	NOTHING: `First, be sure you’ve updated the latest SimplEOS version. Bugs and connection issues might have been solved on the new release. Here goes the link to download it: https://github.com/eosrio/simpleos/releases/tag/v0.7.1
+	NOTHING: `First, be sure you’ve updated the latest SimplEOS version. Bugs and connection issues might have been solved on the new release. Here goes the link to download it: https://github.com/eosrio/simpleos/releases/tag/v0.8.0
 		Usually, it's an endpoint issue. Please close SimplEOS, turn off your internet e open the wallet once again. There will be a field where you'll be able to paste a different endpoint. Paste http://api.eosrio.io and connect to the internet once again. 
 		After completing the procedure, try to execute your previous action. 
 		If it does not work, please contact our team. FYI, some endpoints don’t allow some actions to be executed because of a quick connection interruption.`,
@@ -250,7 +258,7 @@ module.exports = {
 	NEW_VERSION: `You can always check the latest version on our github https://github.com/eosrio/simpleos/releases
 		The download buttons on our website also are always linked to the latest stable version from github.`,
 
-	UPDATE_BUTTON: `Auto-update was giving some errors due to low permission in windows so we removed that feature. We recommend users to download on the links we will publish on github/EOS Rio website. You don't lose anything by overwriting the installation.`,
+	UPDATE_BUTTON: `For version 0.7.2 and up, a warning window will appear every time a user opens SimplEOS to inform about a new released version of the wallet. It shall redirect the user to GitHub or EOS Rio’s website.`,
 
 	HOW_UPDATE: `Download the latest version from our website/Github, install it and it will override the older version: https://github.com/eosrio/simpleos/releases.`,
 
@@ -289,6 +297,58 @@ module.exports = {
 	TELOS: `The Telos Blockchain Network is a fork of the open source EOSIO software which was developed and released by Dan Larimer and Block.one in June 2018.
 		Like EOS, Telos will be a public platform for decentralized applications with incredible scaling potential owing to its advanced technology and delegated proof-of-stake (DPOS) consensus algorithm. Furthermore, it’s being designed to provide EOS mainnet interoperability. At a very high-level, its governance structure will also be similar and Telos will have the same crucial ability to enact the “intent of Code is Law” concept to help avoid critical failures that led to incidents like the Parity wallet hack in 2017.
 		Here goes a link to their Youtube channel to get more information about the sisterchain: https://www.youtube.com/channel/UC1eRSAt81jUf7zM4hsy5S5Q/videos`,
+
+	//REX
+	WHAT_IS_REX: `It stands from “Resource Exchange” and its main idea is to allow token holders to lease out EOS - thus, EOS resources - and receive passive risk free income in return, while dApps developers or others in need can borrow resources for a lower cost. 
+		To buy REX, a users needs to vote for at least 21 BP’s or for a proxy. Therefore, it reinforces the need to participate on EOS voting.
+		The sources of income for the REX community fund are: name auction  fees, RAM fees and leasing payments.`,
+
+	REX_GAINS: `A user can see her/his daily gains by checking the REX/EOS price relation show on SimplEOS’ REX section. Let's say one bought 100 EOS of REX on the REX launch (May 1st).
+	At that time, the rate was 10,000 REX to each EOS (1:10,000). User would have 1,000,000.00 REX. 
+	At the time of this writing, 1 EOS is equal to 9,996.44 REX. REX’s relation to EOS decreases constantly. 
+	If a user chooses to sell on this hypothetical scenario, she/he'd receive 100.035 EOS (0.0035%).
+	Remember that it's a risk-free income and REX is always tied to EOS market price.`,
+
+	LSM: `When a user buys REX (through SimplEOS or other platform), she/he is already being contemplated with REX’s passive income and the amount stays as “Maturing”. 
+	After a 4-5 days period, the REX amount gets ‘matured’ and will stay as a ‘Liquid’ value, which can be sold and turned into EOS instantaneously by selling it.
+	REX can also be moved to a different bucket named “Savings”, where it never gets matured. It works as a “staking” action in safety matters. If a user desires to sell it back to EOS, she/he needs to move it back to ‘Maturing’, wait for 4-5 days so it can become liquid again to execute the action.
+	It’s important to emphasize that, no matter the ‘bucket’ the amount is included (Liquid, Maturing or Savings), while it’s REX, it’s gaining passive income.`,
+
+	REX_AIRDROPS: `If you move your EOS tokens to REX, these tokens are still held on your account and will be visible on snapshots used by airdrops. It will depend on each snapshot taken by the project developer, however it should be easy to include your full balance.`,
+
+	REX_BORROW: `All tokens are leased out for a 30-days period. As a user looking for resources, a payment is made for them and the system will assign EOS tokens based on Bancor rates. The system is able to estimate the amount of tokens but the actual leased out amount could vary based on demand. 
+	In this case, voting requirement does not apply.
+	If a user wants her/his loan to be automatically renewed, she/he can deposit EOS into “Renewal Fund”. When the 30 days expire, the renewal cost will be automatically debited from the fund.`,
+
+	//CONTRACTS
+	WHAT_IS_CONT: `Every account with a smart contract has actions in it which can be executed through SimplEOS without interacting with the contract via coding. Each user can search for a specific contract on our wallet and execute an action within seconds.
+	A quick example:
+	If a user desires to bid for a special name - less than 12 digits and without a dot in it - he/she can click on “EOSIO” contract, click on the “BIDNAME” action and fill the gaps with account name, name desired and bidding amount. And that’s it: action executed without further delay.  
+	The examples are several. Usually websites use these actions attached to their functionalities to allow users to interact with the blockchain.`,
+
+	WHY_ACTION_NOK: `Each contract has its own filling rules and usually the amount is one of the main reasons why it’s not executing. Please try typing the amount with 4 decimals and the token symbol.
+	Ex: 10.0000 EOS`,
+
+	FIND_DAPP: `Contracts are tied to an account name (12-digits code). To search for a contract on SimplEOS, a user needs to go for the “Contracts” interface and type the account/contract name. It will show the contract and its respective actions available to interact.`,
+
+	MORE_ABOUT_ACTIONS: `A users can follow the steps below to understand more about it:
+	- Open a block explorer (Bloks.io is a good example)
+	- Search for the account to which the contract is tied to
+	- Click on ABI option
+	- Search for “ricardian_contract” 
+	The Ricardian contract will show a description to the action on plain text.`,
+
+	//VOTING
+	VOTING_REQ: `REX enforces a voting requirement prior to being able to lease out tokens. To be able to hold REX, the token holder will have to vote for a proxy or a minimum of 21 Block Producers. If you chose to use a proxy to assign your vote weight, the proxy can choose between 0 or 30 Block producers to support. (EOS Authority quote)`,
+
+	PROXY_MEANS: `It means that a user can delegate their voting right and power to a person or a group, which can choose between 0 or 30 Block producers to support. 
+	Usually, users that trusts a proxy opinion prefers this strategy than picking BPs to support by choice.`,
+
+	VOTING_DECAY: `To discourage users from casting a vote for Block Producers and then not updating their vote periodically, a decay in the relative vote strength of old votes was introduced. To maintain maximum vote strength, a user should vote at least once per week. (EOS Canada quote)
+	EOS Rio team develop a Telegram bot that warns a user when a user-chosen threshold decay happens: @FreshVotes_bot
+	To be certain of her/his voting power, EOS Canada’s block explorer shows your exact voting power and when it will decay again just by typing your account name and looking for the “Votes” section: https://eosq.app/`,
+
+	//VARIOUS
 
 	YES: `EOS Rio team is glad for helping you out! Feel free to contact our support team if any doubt remains and help us continue funding this projects by voting for us as Block Producers :)`,
 
