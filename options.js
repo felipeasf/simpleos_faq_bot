@@ -11,7 +11,7 @@ module.exports = {
 	OPTION9: "Roadmap",
 	OPTION10: "Airdrops",
 	OPTION11: "Updates",
-	OPTION12: "Who We Are",
+	OPTION12: "Other",
 	OPTION13: "Sister Chains",
 	//OPTION14: "Other",
 	OPTION15: "REX",
@@ -94,9 +94,9 @@ module.exports = {
 	UPDATE_OP2: "Is there a update button in the wallet?",
 	UPDATE_OP3: "How do I update the wallet?",
 
-	//WHO WE ARE
-	WWA_OPT1: "Who's EOS Rio?",
-	WWA_OPT2: "5 good reasons to Vote for EOS RIO",
+	// //WHO WE ARE
+	// WWA_OPT1: "Who's EOS Rio?",
+	// WWA_OPT2: "5 good reasons to Vote for EOS RIO",
 
 	//SISTER CHAIN
 	SIS_OPT1: "Worbli",
@@ -121,6 +121,11 @@ module.exports = {
 	VOTING_OPT1: "For REX, is there a voting requirement?",
 	VOTING_OPT2: "What does voting for a proxy means?",
 	VOTING_OPT3: "How can I know about my voting power decay?",
+
+	//OTHER
+	OTHER_OPT1: "Who's EOS Rio?",
+	OTHER_OPT2: "5 good reasons to Vote for EOS RIO",
+	OTHER_OPT3: "Suggest new feature",
 
 	//RETURN MSGS
 	RETURN_TO_MAIN: "Return to Main Menu",

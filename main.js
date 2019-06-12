@@ -18,7 +18,8 @@ var ObjectID = require('mongodb').ObjectID;
 const client = new MongoClient(config.mongodb.db_url, {useNewUrlParser: true});
 let feedbacks;
 let blacklist;
-let flag = true;
+let suggestions;
+let flag = 0; //0 = ok, 1 = has question, 2 = new feature
 let entryId;
 
 client.connect(function (err) {
@@ -27,6 +28,7 @@ client.connect(function (err) {
         const db = client.db(config.mongodb.db_name);
         feedbacks = db.collection("feedbacks");
         blacklist = db.collection("blacklist");
+        suggestions = db.collection("suggestions");
 
 });
 
@@ -40,7 +42,7 @@ bot.start((ctx) => {
         });
 
     return ctx.reply(strings.HI_MSG, Markup
-        .keyboard([[options.OPTION15, options.OPTION16, options.OPTION17],[options.OPTION1, options.OPTION2, options.OPTION3], [options.OPTION4, options.OPTION5, options.OPTION6], [options.OPTION7, options.OPTION8, options.OPTION9], [options.OPTION10, options.OPTION11, options.OPTION12, options.OPTION13]])
+        .keyboard([[options.OPTION15, options.OPTION16, options.OPTION17],[options.OPTION1, options.OPTION2, options.OPTION3], [options.OPTION4, options.OPTION5, options.OPTION6], [options.OPTION7, options.OPTION8, options.OPTION9], [options.OPTION10, options.OPTION11, options.OPTION13, options.OPTION12]])
         .resize()
         .extra());
 
@@ -472,21 +474,21 @@ bot.hears(options.UPDATE_OP3, async (ctx) => {
 });
 
 //WHO WE ARE MENU
-bot.hears(options.OPTION12, (ctx) => ctx.reply(strings.CONCERN, Markup
-        .keyboard([[options.WWA_OPT1, options.WWA_OPT2],[options.RETURN_TO_MAIN]])
-        .resize()
-        .extra()));
+// bot.hears(options.OPTION12, (ctx) => ctx.reply(strings.CONCERN, Markup
+//         .keyboard([[options.WWA_OPT1, options.WWA_OPT2],[options.RETURN_TO_MAIN]])
+//         .resize()
+//         .extra()));
 
 //WHO WE ARE ANSWERS
-bot.hears(options.WWA_OPT1, async (ctx) => { 
-    await ctx.reply(strings.WHO);
-    await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
-});
+// bot.hears(options.WWA_OPT1, async (ctx) => { 
+//     await ctx.reply(strings.WHO);
+//     await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+// });
 
-bot.hears(options.WWA_OPT2, async (ctx) => { 
-    await ctx.reply(strings.WHO);
-    await ctx.reply(strings.REASONS, Markup.keyboard([['Yes', 'No']]).resize().extra());
-});
+// bot.hears(options.WWA_OPT2, async (ctx) => { 
+//     await ctx.reply(strings.REASONS);
+//     await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+// });
 
 //SISTER CHAIN MENU
 bot.hears(options.OPTION13, (ctx) => ctx.reply(strings.CONCERN, Markup
@@ -515,6 +517,28 @@ bot.hears(options.SIS_OPT4, async (ctx) => {
     await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
 });
 
+//OTHER MENU
+bot.hears(options.OPTION12, (ctx) => ctx.reply(strings.CONCERN, Markup
+        .keyboard([[options.OTHER_OPT1, options.OTHER_OPT2], [options.OTHER_OPT3, options.RETURN_TO_MAIN]])
+        .resize()
+        .extra()));
+
+//OTHER ANSWERS
+bot.hears(options.OTHER_OPT1, async (ctx) => {
+    await ctx.reply(strings.WHO);
+    await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.OTHER_OPT2, async (ctx) => {
+    await ctx.reply(strings.REASONS);
+    await ctx.reply(strings.SATISFACTION, Markup.keyboard([['Yes', 'No']]).resize().extra());
+});
+
+bot.hears(options.OTHER_OPT3, async (ctx) => {
+    await ctx.reply(strings.FEATURE, Markup.removeKeyboard().extra());
+    flag = 2;
+});
+
 //RETURN BUTTONS
 bot.hears(options.RETURN_TO_MAIN, (ctx) => ctx.reply(strings.HI_MSG, Markup
         .keyboard([[options.OPTION15, options.OPTION16, options.OPTION17],[options.OPTION1, options.OPTION2, options.OPTION3], [options.OPTION4, options.OPTION5, options.OPTION6], [options.OPTION7, options.OPTION8, options.OPTION9], [options.OPTION10, options.OPTION11, options.OPTION12, options.OPTION13]])
@@ -538,7 +562,7 @@ bot.hears("Yes", (ctx) => {
 
 bot.hears("No", (ctx) => {
     check_blacklist(ctx.from.id).then(function(notBlacklisted){
-        flag = false;
+        flag = 1;
         let date = new Date(Date.now()).toLocaleString();
         feedbacks.updateOne({_id: ObjectID(entryId)}, {$set:{rate: 2}}, function(err){
             if(err) {
@@ -590,8 +614,8 @@ bot.on('text', (ctx) => {
     try{
         if(ctx.message.reply_to_message.from.is_bot == true){
             if(ctx.chat.id == config.support.chatId){
-                let answer = ctx.message.reply_to_message.text.replace( /\n/g, " " ).split( " " )
-                return bot.telegram.sendMessage(answer[3], "Support Team: " + ctx.message.text + strings.SATISFACTION + strings.TYPE_NO, Markup
+                let answer = ctx.message.reply_to_message.text.replace( /\n/g, " " ).split( " " );
+                return bot.telegram.sendMessage(answer[5], "Support Team: " + ctx.message.text + strings.SATISFACTION + strings.TYPE_NO, Markup
                 .keyboard([['Yes', 'No']])
                 .resize()
                 .extra());
@@ -601,15 +625,27 @@ bot.on('text', (ctx) => {
     catch(err){
         //do nothing
     }
-    if(flag)
+    if(flag == 1)
     {
-        return;
+        let question = "❓New Question" + "\nUsername: " + ctx.from.username +  "\nUserId: " + ctx.from.id + "\nQuestion: " + ctx.message.text;
+        bot.telegram.sendMessage(config.support.chatId, question);
+        flag = 0;
+    } 
+    if(flag == 2)
+    {
+        let sugest = "❕Feature Suggestion" + "\nUsername: " + ctx.from.username +  "\nUserId: " + ctx.from.id + "\nFeature Suggestion: " + ctx.message.text;
+        bot.telegram.sendMessage(config.support.chatId, sugest);
+
+        suggestions.insertOne({name: ctx.from.username, userid: ctx.from.id, sug: ctx.message.text}, function(err){
+            if (err) {
+                console.log('Error updating object: ' + err);
+            }
+        });
+        flag = 0;
+        return ctx.reply(strings.SUGGESTION + strings.START, Markup.removeKeyboard().extra());
     } 
     else { 
-        let question = "Username: " + ctx.from.username +  "\nUserId: " + ctx.from.id + "\nQuestion: " + ctx.message.text;
-        bot.telegram.sendMessage(config.support.chatId, question);
-        flag = true;
-        
+        return;
     }
 });
 

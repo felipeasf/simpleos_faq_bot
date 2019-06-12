@@ -262,7 +262,7 @@ Attention: Your private key is the only access to your account, so it should alw
 
 	HOW_UPDATE: `Download the latest version from our website/Github, install it and it will override the older version: https://github.com/eosrio/simpleos/releases.`,
 
-	//WHO WE ARE
+	//OTHER
 	WHO: `EOS Rio is an initiative born in Rio de Janeiro, Brazil. Its purpose is to collaborate with people and businesses to create innovative solutions that positively impact society. The team is well diversified, ranging from developers to education professionals. Check more at: www.eosrio.io `,
 
 	REASONS: `1) At EOS Rio we focus on the technical team, and ours is recognized in the community.  Participating on all major testnets efforts gave us deep understanding of the EOSIO and great experience in deploying and operating an EOS Network. EOS Rio is also the founder and key contributor to the Ghostbusters Testnet, an effort to test security approaches to EOS launch and operation that evolved to be EOS CORE, one of the key groups in launching EOS. Igor Llins e Silva, our head of technology, is on the list of EOS Acknowledgments due to its great work on the community testnets.
@@ -277,6 +277,8 @@ Attention: Your private key is the only access to your account, so it should alw
 
 
 		5) Our team is already working on decentralized applications with huge potential social impact partnering up with relevant and innovative social businesses in Brazil. Among our initiatives are partnerships with Banco Maré, a social fintech based in one of the biggest favelas of Rio, to bring financial inclusion and foster entrepreneurship aiming to revert poverties vicious cycle, and also with Polen in order to use blockchain immutability and token economics to incentivize recycling. We are also working with public and private healthcare players in order to develop a blockchain for healthcare data storage empowering citizens to access their complete medical record, having absolute control over who can access the information, including monetization options by sharing anonymized data under explicit consent, with huge impacts on accelerating innovation in healthcare.`,
+
+	FEATURE: `Type the feature you want to see in the next releases: `,
 
 	//SISTER CHAINS
 	WORBLI: `WORBLI provides a massive opportunity for disruption of financial services. The network improves usability and takes us one step closer to mass adoption.
@@ -349,6 +351,7 @@ Attention: Your private key is the only access to your account, so it should alw
 	To be certain of her/his voting power, EOS Canada’s block explorer shows your exact voting power and when it will decay again just by typing your account name and looking for the “Votes” section: https://eosq.app/`,
 
 	//VARIOUS
+	SUGGESTION: `Thank you for your contribution! We hope to see your requested feature live soon! =)`,
 
 	YES: `EOS Rio team is glad for helping you out! Feel free to contact our support team if any doubt remains and help us continue funding this projects by voting for us as Block Producers :)`,
 
