@@ -157,8 +157,11 @@ module.exports = {
 
 	WHY_UNSTAKE: `In order to free your EOS for transfers, you have to unstake them. But please keep in mind that unstaking takes 3 days to free your EOS for transfers.`,
 
-	UNSTAKE_100: `This is not recommended, because then you wouldn’t have resources on the network and wouldn’t be able to perform actions or transactions. Your account would be deemed useless. You would need a small amount left staked in order to perform transactions.
-		EOS has this great feature of letting its users to manage their accounts through as many wallets as they desire. In order to unstake 100% of the EOS balance, the user might search for another wallet that allows this procedure, but keeping in mind its consequences at all times.`,
+	UNSTAKE_100: `This is not recommended =(
+	Your balance of EOS is not tied to any wallet, but to your keys (permissions). When you've imported your private key into SimplEOS, you just chose a wallet to manage your account.
+	That being said, for your account to actively operate - no matter which wallet your using -, you'll need a minimum amount of EOS staked to guarantee enough network resources. Without it, your account would become useless.
+	Usually, the minimum amount needed is around 1.5 to 2 EOS.
+	EOS has this great feature of letting its users to manage their accounts through as many wallets as they desire. In order to unstake 100% of the EOS balance, the user might search for another wallet that allows this procedure, but keeping in mind its consequences at all times.`,
 
 	LEAVE_1_EOS: `~1 EOS is the minimum we deemed safe to left staked in order to be able to perform transactions. If you want to leave less than 1 EOS staked, we recommend you use another tool.`,
 
